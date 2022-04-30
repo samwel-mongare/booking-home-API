@@ -4,7 +4,7 @@ class CreateApartments < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :location
       t.text :description
-      t.boolean :rental
+      t.boolean :rental, default: false
       t.text :image1
       t.text :image2
       t.text :image3
