@@ -27,6 +27,24 @@ class Api::V1::ApartmentsController < ApplicationController
     end
   end
 
+  def update
+    @apartment = Apartment.find(params[:id])
+    @apartment.update(apartment_params)
+    if @apartment.save
+      if @apartment.favourite
+        @user_apartment = UserApartment.create(user_id: 1, apartment_id: @apartment.id)
+      else 
+        @user_apartment = UserApartment.where(user_id: 1, apartment_id: @apartment.id).first
+        @user_apartment.destroy
+      end
+    end
+  end
+
+    def destroy
+      @apartment = Apartment.find(params[:id]).destroy!
+      head :no_content
+    end
+
   private
 
   def apartment_params
