@@ -1,7 +1,7 @@
 # rubocop:disable Style/GuardClause
 
 class Api::V1::ApartmentsController < ApplicationController
-include CurrentUserConcern
+  include CurrentUserConcern
 
   def index
     @apartments = Apartment.all
