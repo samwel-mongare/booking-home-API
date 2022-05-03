@@ -1,24 +1,58 @@
-# README
+## Booking_Home Backend
+> Booking_Home Backend is a RESTful API that allows users to rent or buy a home.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## API Manipulation and Endpoints
 
-Things you may want to cover:
+> Start with the following endpoints:
 
-* Ruby version
+> Sign Up
+```Sign Up/Create User
+ /api/v1/registrations
+```
 
-* System dependencies
+> Sign In
+```Sign In/ Generate User Token
+ /api/v1/sessions
+```
+> Create Apartments POST
 
-* Configuration
+```Create Apartments
+ /api/v1/apartments 
+```
 
-* Database creation
+> Get Apartments GET
 
-* Database initialization
+```Get Apartments
+ /api/v1/apartments
+```
 
-* How to run the test suite
+> Get Apartments by Id GET
 
-* Services (job queues, cache servers, search engines, etc.)
+```Get Apartments by Id
+ /api/v1/apartments/:id
+```
+> Mark as Favourite PUT
 
-* Deployment instructions
+```Update Apartments
+ /api/v1/apartments/:id
+```
+> Delete Apartments DELETE
 
-* ...
+```Delete Apartments
+ /api/v1/apartments/:id
+```
+> Get Rentals GET
+
+```Get Rentals
+ /api/v1/rentals
+```
+> Get Markets GET
+
+```Get Markets
+ /api/v1/markets
+```
+> Get favorites GET
+
+```Get favorites
+ /api/v1/favorites
+```

@@ -5,7 +5,7 @@ class Api::V1::ApartmentsController < ApplicationController
   end
 
   def create
-    @apartment = Apartment.create(apartment_params.merge(owner_id: 1))
+    @apartment = Apartment.create(apartment_params.merge(owner_id: current_user.id))
 
     if @apartment.save
       if @apartment.rental
@@ -14,13 +14,11 @@ class Api::V1::ApartmentsController < ApplicationController
         Market.create(market_params.merge(apartment_id: @apartment.id))
       end
 
-      if @apartment.favourite
-        @user_apartment = UserApartment.create(user_id: 1, apartment_id: @apartment.id)
-      end
+      @user_apartment = UserApartment.create(user_id: current_user.id, apartment_id: @apartment.id) if @apartment.favourite
       render json: ApartmentRepresenter.new(@apartment).as_json, status: :created
     else
       render json: {
-        message: "Apartment not listed",
+        message: 'Apartment not listed',
         error: @apartment.errors,
         status: :unprocessable_entity
       }, status: :unprocessable_entity
@@ -33,17 +31,17 @@ class Api::V1::ApartmentsController < ApplicationController
     if @apartment.save
       if @apartment.favourite
         @user_apartment = UserApartment.create(user_id: 1, apartment_id: @apartment.id)
-      else 
+      else
         @user_apartment = UserApartment.where(user_id: 1, apartment_id: @apartment.id).first
         @user_apartment.destroy
       end
     end
   end
 
-    def destroy
-      @apartment = Apartment.find(params[:id]).destroy!
-      head :no_content
-    end
+  def destroy
+    @apartment = Apartment.find(params[:id]).destroy!
+    head :no_content
+  end
 
   private
 
@@ -52,7 +50,7 @@ class Api::V1::ApartmentsController < ApplicationController
   end
 
   def rental_params
-    params.require(:rental).permit(:price , :period)
+    params.require(:rental).permit(:price, :period)
   end
 
   def market_params
