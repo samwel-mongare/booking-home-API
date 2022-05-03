@@ -37,9 +37,9 @@ class Api::V1::ApartmentsController < ApplicationController
     @apartment.update(apartment_params)
     if @apartment.save
       if @apartment.favourite
-        @user_apartment = UserApartment.create(user_id: 1, apartment_id: @apartment.id)
+        @user_apartment = UserApartment.create(user_id: current_user.id, apartment_id: @apartment.id)
       else
-        @user_apartment = UserApartment.where(user_id: 1, apartment_id: @apartment.id).first
+        @user_apartment = UserApartment.where(user_id: current_user.id, apartment_id: @apartment.id).first
         @user_apartment.destroy
       end
     end
