@@ -18,28 +18,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_29_234218) do
     t.string "name"
     t.string "location"
     t.text "description"
-    t.boolean "rental"
+    t.boolean "rental", default: false
     t.text "image1"
     t.text "image2"
     t.text "image3"
-    t.bigint "owner_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "favourite"
-    t.index ["owner_id"], name: "index_apartments_on_owner_id"
+    t.boolean "favourite", default: false
+    t.index ["user_id"], name: "index_apartments_on_user_id"
   end
 
   create_table "markets", force: :cascade do |t|
-    t.integer "price"
-    t.bigint "apartment_id", null: false
+    t.integer "price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["apartment_id"], name: "index_markets_on_apartment_id"
   end
 
   create_table "rentals", force: :cascade do |t|
-    t.integer "price"
-    t.integer "period"
+    t.integer "price", default: 0
+    t.integer "period", default: 0
     t.bigint "apartment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,8 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_29_234218) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "apartments", "users", column: "owner_id"
-  add_foreign_key "markets", "apartments"
+  add_foreign_key "apartments", "users"
   add_foreign_key "rentals", "apartments"
   add_foreign_key "user_apartments", "apartments"
   add_foreign_key "user_apartments", "users"

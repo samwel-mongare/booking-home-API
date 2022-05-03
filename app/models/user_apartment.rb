@@ -1,7 +1,5 @@
 class UserApartment < ApplicationRecord
-  belongs_to :user
-  belongs_to :apartment
+  belongs_to :user, foreign_key: 'user_id'
+  belongs_to :apartment, foreign_key: 'apartment_id'
 
-  validates :user_id, presence: true
-  validates :apartment_id, presence: true
 end
