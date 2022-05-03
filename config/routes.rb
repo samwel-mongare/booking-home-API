@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do  
-      resources :apartments, only: %i[index create update destroy]
+      resources :apartments, only: %i[index show create update destroy]
       resources :rentals, only: %i[index create destroy]
       resources :markets, only: %i[index create destroy]
       resources :user_apartments, only: %i[index create destroy]

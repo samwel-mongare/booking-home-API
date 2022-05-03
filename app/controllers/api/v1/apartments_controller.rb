@@ -4,6 +4,11 @@ class Api::V1::ApartmentsController < ApplicationController
     render json: ApartmentsRepresenter.new(@apartments).as_json
   end
 
+  def show
+    @apartment = Apartment.find(params[:id])
+    render json: ApartmentRepresenter.new(@apartment).as_json
+  end
+
   def create
     @apartment = Apartment.create(apartment_params.merge(owner_id: current_user.id))
 

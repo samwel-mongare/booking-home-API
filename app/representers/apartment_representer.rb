@@ -6,7 +6,6 @@ class ApartmentRepresenter
   def as_json
     @house_price = apartment.rental ? Rental.where(apartment_id: apartment.id) : Market.where(apartment_id: apartment.id)
     {
-      message: 'Apartment listed',
       id: apartment.id,
       name: apartment.name,
       images: apartment_images(apartment),
