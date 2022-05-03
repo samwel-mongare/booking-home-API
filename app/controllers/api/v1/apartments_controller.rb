@@ -1,6 +1,8 @@
 # rubocop:disable Style/GuardClause
 
 class Api::V1::ApartmentsController < ApplicationController
+include CurrentUserConcern
+
   def index
     @apartments = Apartment.all
     render json: ApartmentsRepresenter.new(@apartments).as_json
@@ -12,7 +14,7 @@ class Api::V1::ApartmentsController < ApplicationController
   end
 
   def create
-    @apartment = Apartment.create(apartment_params.merge(owner_id: current_user.id))
+    @apartment = Apartment.create(apartment_params.merge(user_id: @current_user.id))
 
     if @apartment.save
       if @apartment.rental
@@ -21,7 +23,7 @@ class Api::V1::ApartmentsController < ApplicationController
         Market.create(market_params.merge(apartment_id: @apartment.id))
       end
 
-      @user_apartment = UserApartment.create(user_id: current_user.id, apartment_id: @apartment.id) if @apartment.favourite
+      @user_apartment = UserApartment.create(user_id: @current_user.id, apartment_id: @apartment.id) if @apartment.favourite
       render json: ApartmentRepresenter.new(@apartment).as_json, status: :created
     else
       render json: {
@@ -37,13 +39,13 @@ class Api::V1::ApartmentsController < ApplicationController
     @apartment.update(apartment_params)
     if @apartment.save
       if @apartment.favourite
-        if UserApartment.where(user_id: current_user.id, apartment_id: @apartment.id).empty?
-          @user_apartment = UserApartment.create(user_id: current_user.id, apartment_id: @apartment.id)
+        if UserApartment.where(user_id: @current_user.id, apartment_id: @apartment.id).empty?
+          @user_apartment = UserApartment.create(user_id: @current_user.id, apartment_id: @apartment.id)
         else
           render json: { message: 'Apartment already added to favourites' }, status: :unprocessable_entity
         end
       else
-        @user_apartment = UserApartment.where(user_id: current_user.id, apartment_id: @apartment.id).first
+        @user_apartment = UserApartment.where(user_id: @current_user.id, apartment_id: @apartment.id).first
         @user_apartment.destroy
       end
     end
