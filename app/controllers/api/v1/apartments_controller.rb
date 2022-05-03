@@ -1,3 +1,5 @@
+# rubocop:disable Style/GuardClause
+
 class Api::V1::ApartmentsController < ApplicationController
   def index
     @apartments = Apartment.all
@@ -62,3 +64,5 @@ class Api::V1::ApartmentsController < ApplicationController
     params.require(:market).permit(:price)
   end
 end
+
+# rubocop:enable Style/GuardClause
