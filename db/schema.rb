@@ -31,8 +31,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_29_234218) do
 
   create_table "markets", force: :cascade do |t|
     t.integer "price", default: 0
+    t.bigint "apartment_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["apartment_id"], name: "index_markets_on_apartment_id"
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -62,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_29_234218) do
   end
 
   add_foreign_key "apartments", "users"
+  add_foreign_key "markets", "apartments"
   add_foreign_key "rentals", "apartments"
   add_foreign_key "user_apartments", "apartments"
   add_foreign_key "user_apartments", "users"
