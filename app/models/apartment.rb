@@ -14,8 +14,6 @@ class Apartment < ApplicationRecord
   validates :house_price, presence: true, comparison: { greater_than_or_equal_to: 0 }
   validates :period, presence: true, comparison: { greater_than_or_equal_to: 0 }
 
-
-
   def self.search(search)
     where('name ILIKE ? OR address ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
   end

@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/markets', type: :request do
-
   path '/api/v1/markets' do
     get('list markets') do
       tags 'markets'

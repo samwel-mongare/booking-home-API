@@ -1,9 +1,7 @@
 require 'swagger_helper'
 
 RSpec.describe 'sessions', type: :request do
-
   path '/sessions' do
-
     post('create session') do
       tags 'sessions'
       consumes 'application/json'
@@ -11,7 +9,7 @@ RSpec.describe 'sessions', type: :request do
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
-          user: { 
+          user: {
             type: :object,
             properties: {
               email: { type: :string },
@@ -22,7 +20,6 @@ RSpec.describe 'sessions', type: :request do
         required: %w[email password]
       }
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -39,7 +36,6 @@ RSpec.describe 'sessions', type: :request do
     delete('logout session') do
       tags 'sessions'
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -56,7 +52,6 @@ RSpec.describe 'sessions', type: :request do
     get('logged_in session') do
       tags 'sessions'
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {

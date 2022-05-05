@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/rentals', type: :request do
-
   path '/api/v1/rentals' do
     get('list rentals') do
       tags 'rentals'

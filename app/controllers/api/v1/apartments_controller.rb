@@ -18,9 +18,9 @@ class Api::V1::ApartmentsController < ApplicationController
 
     if @apartment.save
       if @apartment.rental
-        @rental = Rental.create(price: @apartment.rental_price || 0, apartment_id: @apartment.id, period: @apartment.period || 0)
+        @rental = Rental.create(price: @apartment.rental_price, apartment_id: @apartment.id, period: @apartment.period)
       else
-        Market.create(price: @apartment.house_price || 0, apartment_id: @apartment.id)
+        Market.create(price: @apartment.house_price, apartment_id: @apartment.id)
       end
 
       @user_apartment = UserApartment.create(user_id: @current_user.id, apartment_id: @apartment.id) if @apartment.favourite
@@ -59,7 +59,7 @@ class Api::V1::ApartmentsController < ApplicationController
   private
 
   def apartment_params
-    params.require(:apartment).permit(:name, :description, :location, :rental, :image1, :image2, 
+    params.require(:apartment).permit(:name, :description, :location, :rental, :image1, :image2,
                                       :image3, :favourite, :rental_price, :house_price, :period)
   end
 end
