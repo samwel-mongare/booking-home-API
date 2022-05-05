@@ -55,9 +55,6 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
   gem 'rswag-specs'
-  gem 'rswag'
-  gem 'rswag-api'
-  gem 'rswag-ui'
 end
 
 group :development do
@@ -70,3 +67,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
