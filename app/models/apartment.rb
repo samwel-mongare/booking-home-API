@@ -10,6 +10,11 @@ class Apartment < ApplicationRecord
   validates :image1, presence: true
   validates :rental, inclusion: { in: [true, false] }
   validates :favourite, inclusion: { in: [true, false] }
+  validates :rental_price, presence: true, comparison: { greater_than_or_equal_to: 0 }
+  validates :house_price, presence: true, comparison: { greater_than_or_equal_to: 0 }
+  validates :period, presence: true, comparison: { greater_than_or_equal_to: 0 }
+
+
 
   def self.search(search)
     where('name ILIKE ? OR address ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
