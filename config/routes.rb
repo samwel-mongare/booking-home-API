@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
   delete :logout, to: "sessions#logout"
