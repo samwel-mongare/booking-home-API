@@ -20,7 +20,7 @@ RSpec.describe 'api/v1/apartments', type: :request do
         end
         let(:apartment) do
           Apartment.create!(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true,
-                        favourite: true, rental_price: 30, house_price: 900, period: 3)
+                            favourite: true, rental_price: 30, house_price: 900, period: 3)
         end
         run_test!
       end
