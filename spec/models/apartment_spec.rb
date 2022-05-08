@@ -21,11 +21,13 @@ RSpec.describe Apartment, type: :model do
 
   describe 'validations' do
     context 'uniqueness of apartment name' do
-      let(:apartment){ Apartment.new(user_id: 1, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true, favourite: true, rental_price: 30, house_price: 900, period: 3) }
+      let(:apartment){ 
+      user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
+      Apartment.new(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true, favourite: true, rental_price: 30, house_price: 900, period: 3) }
       it {expect(apartment).to_not be_valid}
     end
 
-    it 'isn\'t valid without name' do
+    it 'isn\'t valid without name value' do
       subject.name = ''
       expect(subject).to_not be_valid
     end
@@ -55,7 +57,7 @@ RSpec.describe Apartment, type: :model do
       expect(subject).to_not be_valid
     end
 
-    it 'isn\'t valid with value less than 0' do
+    it 'isn\'t valid with rental price value less than 0' do
       subject.rental_price = -8
       expect(subject).to_not be_valid
     end
@@ -65,7 +67,7 @@ RSpec.describe Apartment, type: :model do
       expect(subject).to_not be_valid
     end
 
-    it 'isn\'t valid with value less than 0' do
+    it 'isn\'t valid with house price value less than 0' do
       subject.house_price = -1
       expect(subject).to_not be_valid
     end
