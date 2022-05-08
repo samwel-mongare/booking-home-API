@@ -59,8 +59,8 @@ end
 
 
 group :production do
-  gem 'rspec-rails'
-  gem 'rswag-specs'
+  # gem 'rspec-rails'
+  # gem 'rswag-specs'
 end
 
 group :development do
@@ -77,3 +77,4 @@ end
 gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-ui'
+gem 'shoulda-matchers', require: false
