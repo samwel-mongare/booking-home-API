@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Rental, type: :model do
   subject do
     user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
-    apartment = Apartment.create!(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true, favourite: true, rental_price: 30, house_price: 900, period: 3)
+    apartment = Apartment.create!(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1',
+                                  rental: true, favourite: true, rental_price: 30, house_price: 900, period: 3)
     Rental.new(apartment_id: apartment.id, price: 900, period: 4)
   end
 

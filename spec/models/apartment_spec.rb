@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Apartment, type: :model do
   subject do
     user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
-    Apartment.new(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true, favourite: true, rental_price: 30, house_price: 900, period: 3)
+    Apartment.new(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true,
+                  favourite: true, rental_price: 30, house_price: 900, period: 3)
   end
 
   before { subject.save }
@@ -21,10 +22,12 @@ RSpec.describe Apartment, type: :model do
 
   describe 'validations' do
     context 'uniqueness of apartment name' do
-      let(:apartment){ 
-      user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
-      Apartment.new(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true, favourite: true, rental_price: 30, house_price: 900, period: 3) }
-      it {expect(apartment).to_not be_valid}
+      let(:apartment) do
+        user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
+        Apartment.new(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true,
+                      favourite: true, rental_price: 30, house_price: 900, period: 3)
+      end
+      it { expect(apartment).to_not be_valid }
     end
 
     it 'isn\'t valid without name value' do
@@ -78,7 +81,7 @@ RSpec.describe Apartment, type: :model do
     end
 
     it 'should check inclusive values for rental' do
-      %w(true false).each do |v|
+      %w[true false].each do |v|
         should allow_value(v).for(:rental)
       end
     end
@@ -86,12 +89,11 @@ RSpec.describe Apartment, type: :model do
     it { should_not allow_value('').for(:rental) }
 
     it 'should check inclusive values for favourite' do
-      %w(true false).each do |v|
+      %w[true false].each do |v|
         should allow_value(v).for(:favourite)
       end
     end
 
     it { should_not allow_value('').for(:favourite) }
-
   end
 end

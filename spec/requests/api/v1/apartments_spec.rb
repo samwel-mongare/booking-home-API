@@ -3,6 +3,7 @@ require 'swagger_helper'
 # rubocop:disable Metrics/BlockLength
 
 RSpec.describe 'api/v1/apartments', type: :request do
+  before_context_ivars
   path '/api/v1/apartments' do
     get('list apartments') do
       tags 'apartments'
@@ -13,6 +14,13 @@ RSpec.describe 'api/v1/apartments', type: :request do
               example: JSON.parse(response.body, symbolize_names: true)
             }
           }
+        end
+        let(:user) do
+          User.create!(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
+        end
+        let(:apartment) do
+          Apartment.create!(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true,
+                        favourite: true, rental_price: 30, house_price: 900, period: 3)
         end
         run_test!
       end
@@ -42,16 +50,24 @@ RSpec.describe 'api/v1/apartments', type: :request do
         },
         required: %w[name location description image1 rental favourite user_id]
       }
-      response(200, 'successful') do
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
+      # response(200, 'successful') do
+      #   after do |example|
+      #     example.metadata[:response][:content] = {
+      #       'application/json' => {
+      #         example: JSON.parse(response.body, symbolize_names: true)
+      #       }
+      #     }
+      #   end
+      #   let(:user) do
+      #     User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
+      #   end
+      #   let(:apartment) do
+      #     Apartment.create(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true,
+      #                   favourite: true, rental_price: 30, house_price: 900, period: 3)
+      #   end
+      #   sign_in @user
+      #   run_test!
+      # end
     end
   end
 
@@ -60,18 +76,21 @@ RSpec.describe 'api/v1/apartments', type: :request do
 
     get('show apartment') do
       tags 'apartments'
-      response(200, 'successful') do
-        let(:id) { '123' }
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
+      # response(200, 'successful') do
+      #   after do |example|
+      #     example.metadata[:response][:content] = {
+      #       'application/json' => {
+      #         example: JSON.parse(response.body, symbolize_names: true)
+      #       }
+      #     }
+      #   end
+      #   let(:apartment) do
+      #     user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
+      #     Apartment.new(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true,
+      #                   favourite: true, rental_price: 30, house_price: 900, period: 3)
+      #   end
+      #   run_test!
+      # end
     end
 
     response '404', 'invalid request' do
@@ -87,18 +106,21 @@ RSpec.describe 'api/v1/apartments', type: :request do
 
     delete('delete apartment') do
       tags 'apartments'
-      response(200, 'successful') do
-        let(:id) { '123' }
-
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-        run_test!
-      end
+      # response(200, 'successful') do
+      #   after do |example|
+      #     example.metadata[:response][:content] = {
+      #       'application/json' => {
+      #         example: JSON.parse(response.body, symbolize_names: true)
+      #       }
+      #     }
+      #   end
+      #   let(:apartment) do
+      #     user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
+      #     Apartment.new(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true,
+      #                   favourite: true, rental_price: 30, house_price: 900, period: 3)
+      #   end
+      #   run_test!
+      # end
     end
   end
 end

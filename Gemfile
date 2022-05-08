@@ -57,7 +57,6 @@ group :development, :test do
   gem 'rswag-specs'
 end
 
-
 group :production do
   # gem 'rspec-rails'
   # gem 'rswag-specs'
