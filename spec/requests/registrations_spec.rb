@@ -20,16 +20,17 @@ RSpec.describe 'registrations', type: :request do
         required: %w[name email password password_confirmation]
       }
 
-      # response(200, 'successful') do
-      #   after do |example|
-      #     example.metadata[:response][:content] = {
-      #       'application/json' => {
-      #         example: JSON.parse(response.body, symbolize_names: true)
-      #       }
-      #     }
-      #   end
-      #   run_test!
-      # end
+      response(200, 'successful') do
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        let(:registration) { { user: { name: 'Barbare', email: 'barbare@test.come', password: 'Password123456', password_confirmation: 'Password123456' } } }
+        run_test!
+      end
     end
   end
 end

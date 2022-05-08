@@ -19,20 +19,18 @@ RSpec.describe 'sessions', type: :request do
         },
         required: %w[email password]
       }
-      # response(200, 'successful') do
-      # after do |example|
-      #   example.metadata[:response][:content] = {
-      #     'application/json' => {
-      #       example: JSON.parse(response.body, symbolize_names: true)
-      #     }
-      #   }
-      # end
-      #   let(:user) do
-      #     user = User.create!(name: 'Barbar', email: 'barbar@test.come', password: 'karate')
-      #     { email: user.email, password: 'password' }
-      #   end
-      #   run_test!
-      # end
+      response(200, 'successful') do
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+
+        let(:user) { { user: { email: 'barbare@test.come', password: 'Password123456' } } }
+        run_test!
+      end
     end
   end
 
