@@ -28,6 +28,7 @@ RSpec.describe 'registrations', type: :request do
             }
           }
         end
+        let(:registration) { { user: { name: 'Barbare', email: 'barbare@test.come', password: 'Password123456', password_confirmation: 'Password123456' } } }
         run_test!
       end
     end

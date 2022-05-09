@@ -27,6 +27,8 @@ RSpec.describe 'sessions', type: :request do
             }
           }
         end
+
+        let(:user) { { user: { email: 'barbare@test.come', password: 'Password123456' } } }
         run_test!
       end
     end
