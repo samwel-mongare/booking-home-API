@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :rentals, only: %i[index create destroy]
       resources :markets, only: %i[index create destroy]
       resources :user_apartments, only: %i[index create destroy]
+      resources :bookings, only: [:index, :show,:new, :create, :update, :destroy]
     end
   end
   # Defines the root path route ("/")
