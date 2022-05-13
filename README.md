@@ -16,6 +16,9 @@ If you would like to clone and view it on your side then try `http://localhost:3
 
 ## Front end Repository
 
+[Pull Request](https://github.com/Meri-MG/booking-home-front-end/pull/30)
+[Kanban Board](https://github.com/Meri-MG/booking-home-front-end/projects/1)
+
 ## Getting Started
 
 - [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) on your local machine 
