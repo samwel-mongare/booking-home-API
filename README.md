@@ -3,9 +3,10 @@
 
 ## API Manipulation and Endpoints
 
-If you need further information about the endpoints you can view the documentation navigating to /api-docs. Or you can just click this [link](https://booking-home-api.herokuapp.com/api-docs)
-
+If you need further information about the endpoints you can view the documentation navigating to /api-docs.
 If you would like to clone and view it on your side then try `http://localhost:3000/api-docs`.
+
+![ERD](https://user-images.githubusercontent.com/39459774/168259420-3f46595f-2409-43c2-97f7-5226e076bd4c.png)
 
 ## Built With
 
@@ -14,10 +15,6 @@ If you would like to clone and view it on your side then try `http://localhost:3
 - PostgreSQL
 
 ## Front end Repository
-
-
-## Live Demo 
-
 
 ## Getting Started
 
@@ -76,7 +73,6 @@ rubocop
 :man: **Yassine Omari**
 - [GitHub](https://github.com/youmari)
 - [LinkedIn](https://www.linkedin.com/in/youmari/)
-
 
 :man: **Mohamed ElShamy**
 - [GitHub](https://github.com/mohamedelshamy55?fbclid=IwAR1fNoNPIEahycm9QBJ_PbWpS7HaIKIWisu14zcPIrqg7PnzE-mVuaWVL4E)
