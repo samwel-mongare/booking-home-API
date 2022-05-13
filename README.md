@@ -3,56 +3,99 @@
 
 ## API Manipulation and Endpoints
 
-> Start with the following endpoints:
+If you need further information about the endpoints you can view the documentation navigating to /api-docs. Or you can just click this [link](https://booking-home-api.herokuapp.com/api-docs)
 
-> Sign Up
-```Sign Up/Create User
- /api/v1/registrations
+If you would like to clone and view it on your side then try `http://localhost:3000/api-docs`.
+
+## Built With
+
+- Ruby
+- Ruby on Rails
+- PostgreSQL
+
+## Front end Repository
+
+
+## Live Demo 
+
+
+## Getting Started
+
+- [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) on your local machine 
+- [Install Ruby on Rails](https://guides.rubyonrails.org/v5.1/getting_started.html)
+- Clone [this repository](https://github.com/Mosams/booking-home-API)
+  ```
+  git clone git@github.com:Mosams/booking-home-API.git
+  ```
+- To get started, In the root directory run:
+  ```
+  gem install bundler
+  ```
+  Then run:
+  ```
+  bundle install
+  ```
+  To start the server run: 
+
+  ```
+  rails s
+  ```
+  Open the browser with `localhost:3000`
+
+  
+## After installing bundle
+
+Please run the following commands `rails db:create` `rails db:migrate` `rails s`
+
+## Tests
+```
+bundle exec rspec
+```
+Or
+```
+rspec spec
+```
+### To track linter errors locally follow these steps:  
+
+Track linter errors run:
+```
+rubocop
 ```
 
-> Sign In
-```Sign In/ Generate User Token
- /api/v1/sessions
-```
-> Create Apartments POST
+## Authors
 
-```Create Apartments
- /api/v1/apartments 
-```
+:woman: **Meri Gogichashvili**
 
-> Get Apartments GET
+- [GitHub](https://github.com/Meri-MG)
+- [LinkedIn](https://www.linkedin.com/in/meri-gogichashvili/)
 
-```Get Apartments
- /api/v1/apartments
-```
+:man: **Sam Mong'are**
+- [GitHub](https://github.com/Mosams)
+- [LinkedIn](https://www.linkedin.com/in/samwel-mongare/)
 
-> Get Apartments by Id GET
+:man: **Yassine Omari**
+- [GitHub](https://github.com/youmari)
+- [LinkedIn](https://www.linkedin.com/in/youmari/)
 
-```Get Apartments by Id
- /api/v1/apartments/:id
-```
-> Mark as Favourite PUT
 
-```Update Apartments
- /api/v1/apartments/:id
-```
-> Delete Apartments DELETE
+:man: **Mohamed ElShamy**
+- [GitHub](https://github.com/mohamedelshamy55?fbclid=IwAR1fNoNPIEahycm9QBJ_PbWpS7HaIKIWisu14zcPIrqg7PnzE-mVuaWVL4E)
+- [LinkedIn](https://www.linkedin.com/in/mohamedelshamy85/)
 
-```Delete Apartments
- /api/v1/apartments/:id
-```
-> Get Rentals GET
+## 🤝 Contributing
 
-```Get Rentals
- /api/v1/rentals
-```
-> Get Markets GET
+Contributions, issues, and feature requests are welcome!
 
-```Get Markets
- /api/v1/markets
-```
-> Get favorites GET
+Feel free to check the [issues page](https://github.com/Mosams/booking-home-API/issues).
 
-```Get favorites
- /api/v1/favorites
-```
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Thanks to our reviewers and coding partners.
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.

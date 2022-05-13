@@ -13,6 +13,7 @@ class ApartmentsRepresenter
           images: apartment_images(apartment),
           description: apartment.description,
           location: apartment.location,
+          reserved: apartment.favourite,
           price: @house_price.first.price,
           period: @house_price.first.period
         }
@@ -23,7 +24,8 @@ class ApartmentsRepresenter
           images: apartment_images(apartment),
           description: apartment.description,
           location: apartment.location,
-          price: @house_price.first.price
+          price: @house_price.first.price,
+          reserved: apartment.favourite
         }
       end
     end

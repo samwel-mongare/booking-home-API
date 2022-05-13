@@ -11,6 +11,7 @@ class ApartmentRepresenter
       images: apartment_images(apartment),
       description: apartment.description,
       location: apartment.location,
+      reserved: apartment.favourite,
       price: @house_price.first.price,
       period: apartment.rental ? @house_price.first.period : 0
     }
