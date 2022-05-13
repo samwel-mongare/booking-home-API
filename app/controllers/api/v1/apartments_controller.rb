@@ -2,7 +2,7 @@
 
 class Api::V1::ApartmentsController < ApplicationController
   include CurrentUserConcern
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     @apartments = Apartment.all
@@ -15,7 +15,7 @@ class Api::V1::ApartmentsController < ApplicationController
   end
 
   def create
-    @apartment = Apartment.create(apartment_params.merge(user_id: @current_user.id))
+    @apartment = Apartment.create(apartment_params)
 
     if @apartment.save
       if @apartment.rental
@@ -36,17 +36,18 @@ class Api::V1::ApartmentsController < ApplicationController
   end
 
   def update
+    @current_user = User.find(apartment_params[:user_id])
     @apartment = Apartment.find(params[:id])
-    @apartment.update(apartment_params)
+    @apartment.update(favourite: apartment_params[:favourite])
     if @apartment.save
       if @apartment.favourite
-        if UserApartment.where(user_id: @current_user.id, apartment_id: @apartment.id).empty?
-          @user_apartment = UserApartment.create(user_id: @current_user.id, apartment_id: @apartment.id)
+        if UserApartment.where(user_id: @current_user.id, apartment_id: @apartment.id ).empty?
+          @user_apartment = UserApartment.create(user_id:  @current_user.id, apartment_id: @apartment.id)
         else
           render json: { message: 'Apartment already added to favourites' }, status: :unprocessable_entity
         end
       else
-        @user_apartment = UserApartment.where(user_id: @current_user.id, apartment_id: @apartment.id).first
+        @user_apartment = UserApartment.where(user_id:  @current_user.id, apartment_id: @apartment.id).first
         @user_apartment.destroy
       end
     end
@@ -61,7 +62,7 @@ class Api::V1::ApartmentsController < ApplicationController
 
   def apartment_params
     params.require(:apartment).permit(:name, :description, :location, :rental, :image1, :image2,
-                                      :image3, :favourite, :rental_price, :house_price, :period)
+                                      :image3, :favourite, :rental_price, :house_price, :period, :user_id, :apartment_id)
   end
 end
 
