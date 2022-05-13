@@ -52,13 +52,13 @@ RSpec.describe 'api/v1/apartments', type: :request do
         required: %w[name location description image1 rental favourite user_id]
       }
       # response(200, 'successful') do
-        # after do |example|
-        #   example.metadata[:response][:content] = {
-        #     'application/json' => {
-        #       example: JSON.parse(response.body, symbolize_names: true)
-        #     }
-        #   }
-        # end
+      # after do |example|
+      #   example.metadata[:response][:content] = {
+      #     'application/json' => {
+      #       example: JSON.parse(response.body, symbolize_names: true)
+      #     }
+      #   }
+      # end
       #   let(:user) do
       #     User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
       #   end
@@ -77,13 +77,13 @@ RSpec.describe 'api/v1/apartments', type: :request do
     get('show apartment') do
       tags 'apartments'
       # response(200, 'successful') do
-        # after do |example|
-        #   example.metadata[:response][:content] = {
-        #     'application/json' => {
-        #       example: JSON.parse(response.body, symbolize_names: true)
-        #     }
-        #   }
-        # end
+      # after do |example|
+      #   example.metadata[:response][:content] = {
+      #     'application/json' => {
+      #       example: JSON.parse(response.body, symbolize_names: true)
+      #     }
+      #   }
+      # end
       #   let(:apartment) do
       #     user = User.create(name: 'Barbare', email: 'barbare@test.come', password: 'karate')
       #     Apartment.new(user_id: user.id, name: 'Beach apartment', location: 'Thailand', description: 'apartment of yoru dreams', image1: 'image1', rental: true,

@@ -41,13 +41,13 @@ class Api::V1::ApartmentsController < ApplicationController
     @apartment.update(favourite: apartment_params[:favourite])
     if @apartment.save
       if @apartment.favourite
-        if UserApartment.where(user_id: @current_user.id, apartment_id: @apartment.id ).empty?
-          @user_apartment = UserApartment.create(user_id:  @current_user.id, apartment_id: @apartment.id)
+        if UserApartment.where(user_id: @current_user.id, apartment_id: @apartment.id).empty?
+          @user_apartment = UserApartment.create(user_id: @current_user.id, apartment_id: @apartment.id)
         else
           render json: { message: 'Apartment already added to favourites' }, status: :unprocessable_entity
         end
       else
-        @user_apartment = UserApartment.where(user_id:  @current_user.id, apartment_id: @apartment.id).first
+        @user_apartment = UserApartment.where(user_id: @current_user.id, apartment_id: @apartment.id).first
         @user_apartment.destroy
       end
     end
