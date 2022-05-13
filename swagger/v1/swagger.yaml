@@ -51,6 +51,8 @@ paths:
                       type: integer
                     period:
                       type: integer
+                    user_id:
+                      type: integer
               required:
               - name
               - location
