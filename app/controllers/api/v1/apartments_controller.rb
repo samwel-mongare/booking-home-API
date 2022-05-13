@@ -2,7 +2,6 @@
 
 class Api::V1::ApartmentsController < ApplicationController
   include CurrentUserConcern
-  # before_action :authenticate_user!
 
   def index
     @apartments = Apartment.all
