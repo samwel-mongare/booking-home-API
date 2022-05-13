@@ -1,0 +1,186 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/apartments":
+    get:
+      summary: list apartments
+      tags:
+      - apartments
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create apartment
+      tags:
+      - apartments
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                apartment:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    location:
+                      type: string
+                    description:
+                      type: string
+                    image1:
+                      type: string
+                    image2:
+                      type: string
+                    image3:
+                      type: string
+                    rental:
+                      type: boolean
+                    favourite:
+                      type: boolean
+                    rental_price:
+                      type: integer
+                    house_price:
+                      type: integer
+                    period:
+                      type: integer
+                    user_id:
+                      type: integer
+              required:
+              - name
+              - location
+              - description
+              - image1
+              - rental
+              - favourite
+              - user_id
+  "/api/v1/apartments/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show apartment
+      tags:
+      - apartments
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete apartment
+      tags:
+      - apartments
+      responses:
+        '200':
+          description: successful
+  "/api/v1/markets":
+    get:
+      summary: list markets
+      tags:
+      - markets
+      responses:
+        '200':
+          description: successful
+  "/api/v1/rentals":
+    get:
+      summary: list rentals
+      tags:
+      - rentals
+      responses:
+        '200':
+          description: successful
+  "/api/v1/user_apartments":
+    get:
+      summary: list user_apartments
+      tags:
+      - show apartments
+      responses:
+        '200':
+          description: successful
+  "/registrations":
+    post:
+      summary: create registration
+      tags:
+      - sign up
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+              required:
+              - name
+              - email
+              - password
+              - password_confirmation
+  "/sessions":
+    post:
+      summary: create session
+      tags:
+      - sessions
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+              required:
+              - email
+              - password
+  "/logout":
+    delete:
+      summary: logout session
+      tags:
+      - sessions
+      responses:
+        '200':
+          description: successful
+  "/logged_in":
+    get:
+      summary: logged_in session
+      tags:
+      - sessions
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000/
